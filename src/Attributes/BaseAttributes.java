@@ -2,37 +2,37 @@ package Attributes;
 
 public class BaseAttributes {
 
-    public int str;
-    public int dex;
-    public int intel;
+    public double str;
+    public double dex;
+    public double intel;
 
-    public BaseAttributes(int str, int dex, int intel) {
+    public BaseAttributes(double str, double dex, double intel) {
         this.str = str;
         this.dex = dex;
         this.intel = intel;
     }
 
-    public int getStr() {
+    public double getStr() {
         return str;
     }
 
-    public void setStr(int str) {
+    public void setStr(double str) {
         this.str = str;
     }
 
-    public int getDex() {
+    public double getDex() {
         return dex;
     }
 
-    public void setDex(int dex) {
+    public void setDex(double dex) {
         this.dex = dex;
     }
 
-    public int getIntel() {
+    public double getIntel() {
         return intel;
     }
 
-    public void setIntel(int intel) {
+    public void setIntel(double intel) {
         this.intel = intel;
     }
 }

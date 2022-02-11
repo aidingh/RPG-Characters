@@ -23,7 +23,7 @@ public class Weapons extends Item{
         this.weaponType = weaponType;
     }
 
-    public double weaponDamagePerSecond() {
+    public double getWeaponDamage() {
         return this.dps = this.dmg * this.attackSpeed;
     }
 

@@ -1,7 +1,7 @@
 package com.company;
-
 import Armour.Armours;
-import Heroes.Mage;
+import Attributes.PrimaryAttributes;
+import Heroes.Warrior;
 import Item.Item;
 import Weapons.Weapons;
 
@@ -9,28 +9,52 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String name = "Gini";
+        String name = "Ulrik";
 
-        Mage mage = new Mage(name);
-        mage.heroLevelUp();
+        Warrior warrior = new Warrior(name);
 
-        Weapons weapon = new Weapons();
-        weapon.setItemName("Common Wand");
-        weapon.setItemLevel(4);
-        weapon.setItemSlot(Item.ItemSlots.WEAPON);
-        weapon.setWeaponType(Weapons.WeaponItems.WANDS);
-        weapon.setDmg(7);
-        weapon.setAttackSpeed(1.1);
+        Weapons axe = new Weapons();
+        axe.setItemName("Common Axe");
+        axe.setItemLevel(1);
+        axe.setItemSlot(Item.ItemSlots.WEAPON);
+        axe.setWeaponType(Weapons.WeaponItems.AXES);
+        axe.setDmg(7);
+        axe.setAttackSpeed(1.1);
 
-        Armours armour = new Armours();
-        armour.setItemName("Common Cloth Robe Armour");
-        armour.setItemLevel(4);
-        armour.setItemSlot(Item.ItemSlots.BODY);
-        armour.setArmourItems(Armours.ArmourItems.CLOTH);
-        //armour.setAttributes()
+        Weapons bow = new Weapons();
+        bow.setItemName("Common Bow");
+        bow.setItemLevel(1);
+        bow.setItemSlot(Item.ItemSlots.WEAPON);
+        bow.setWeaponType(Weapons.WeaponItems.BOWS);
+        bow.setDmg(7);
+        bow.setAttackSpeed(1.1);
 
-        boolean didEquipWeapon = mage.equipWeapon(weapon);
-        boolean didEquipArmour = mage.equipArmour(armour);
+        Armours plateBodyArmour = new Armours();
+        plateBodyArmour.setItemName("Common Plate Body Armour");
+        plateBodyArmour.setItemLevel(1);
+        plateBodyArmour.setItemSlot(Item.ItemSlots.BODY);
+        plateBodyArmour.setArmourItems(Armours.ArmourItems.PLATE);
+        plateBodyArmour.setPrimaryAttributes(new PrimaryAttributes(1,0,0));
+
+        boolean didEquipWeapon = warrior.equipWeapon(axe);
+        //boolean didEquipWeapon = warrior.equipWeapon(bow);
+        boolean didEquipBodyArmour = warrior.equipArmour(plateBodyArmour);
+
+        System.out.println(warrior.toString());
+
+        warrior.heroLevelUp();
+
+        Armours plateHeadArmour = new Armours();
+        plateHeadArmour.setItemName("Common Plate Head Armour");
+        plateHeadArmour.setItemLevel(1);
+        plateHeadArmour.setItemSlot(Item.ItemSlots.HEAD);
+        plateHeadArmour.setArmourItems(Armours.ArmourItems.PLATE);
+        plateHeadArmour.setPrimaryAttributes(new PrimaryAttributes(2,0,0));
+
+        boolean didEquipHeadArmour = warrior.equipArmour(plateHeadArmour);
+        warrior.heroLevelUp();
+
+        System.out.println(warrior.toString());
 
     }
 

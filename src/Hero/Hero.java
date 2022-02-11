@@ -1,10 +1,8 @@
 package Hero;
 import Armour.Armours;
 import Attributes.BaseAttributes;
-import Attributes.PrimaryAttributes;
 import Item.Item;
 import Weapons.Weapons;
-
 import java.util.HashMap;
 
 public abstract class Hero extends Item {
@@ -14,7 +12,10 @@ public abstract class Hero extends Item {
     }
 
     public int level = 1;
-    public PrimaryAttributes totalPrimaryAttributes;
+    public HashMap<ItemSlots, Item> equipments = new HashMap<>();
+    public double charDps;
+    public double base;
+    public double totalPrimaryAttributes;
     public BaseAttributes baseAttributes;
     public ClassType classType;
 
@@ -34,17 +35,11 @@ public abstract class Hero extends Item {
 
     public abstract void attributeGain();
 
+    public abstract double getCharacterDps();;
+
     public void heroLevelUp(){
         this.level = this.level + 1;
         this.attributeGain();
-    }
-
-    public PrimaryAttributes getTotalPrimaryAttributes() {
-        return totalPrimaryAttributes;
-    }
-
-    public void setTotalPrimaryAttributes(PrimaryAttributes totalPrimaryAttributes) {
-        this.totalPrimaryAttributes = totalPrimaryAttributes;
     }
 
     public BaseAttributes getBaseAttributes() {
