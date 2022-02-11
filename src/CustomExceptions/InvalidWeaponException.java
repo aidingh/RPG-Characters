@@ -1,4 +1,4 @@
-package Item;
+package CustomExceptions;
 
 public class InvalidWeaponException extends Exception {
     public InvalidWeaponException(String message) {

@@ -1,5 +1,6 @@
 package com.company;
 
+import Armour.Armours;
 import Heroes.Mage;
 import Item.Item;
 import Weapons.Weapons;
@@ -12,7 +13,6 @@ public class Main {
 
         Mage mage = new Mage(name);
         mage.heroLevelUp();
-        System.out.println(mage.toString());
 
         Weapons weapon = new Weapons();
         weapon.setItemName("Common Wand");
@@ -22,7 +22,15 @@ public class Main {
         weapon.setDmg(7);
         weapon.setAttackSpeed(1.1);
 
-        mage.setEquipments(weapon);
+        Armours armour = new Armours();
+        armour.setItemName("Common Cloth Robe Armour");
+        armour.setItemLevel(4);
+        armour.setItemSlot(Item.ItemSlots.BODY);
+        armour.setArmourItems(Armours.ArmourItems.CLOTH);
+        //armour.setAttributes()
+
+        boolean didEquipWeapon = mage.equipWeapon(weapon);
+        boolean didEquipArmour = mage.equipArmour(armour);
 
     }
 

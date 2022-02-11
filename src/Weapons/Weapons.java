@@ -11,15 +11,9 @@ public class Weapons extends Item{
     public double attackSpeed;
     public double dmg;
     public String weaponName;
-
     public WeaponItems weaponType;
 
     public Weapons() {}
-
-
-    public void attributeGain() {
-    }
-
 
     public WeaponItems getWeaponType() {
         return weaponType;

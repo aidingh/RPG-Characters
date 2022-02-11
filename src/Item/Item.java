@@ -1,7 +1,4 @@
 package Item;
-import Weapons.Weapons;
-import java.util.HashMap;
-
 
 public abstract class Item {
 
@@ -12,18 +9,6 @@ public abstract class Item {
     public String itemName;
     public int itemLevel;
     public ItemSlots itemSlot;
-    public HashMap<ItemSlots, Weapons> equipments = new HashMap<>();
-
-    public HashMap<ItemSlots, Weapons> getEquipments() {
-        return equipments;
-    }
-
-    public void setEquipments(Weapons wep) {
-        System.out.println(wep.getItemLevel());
-        System.out.println(wep.getItemSlot());
-        System.out.println(wep.getWeaponType());
-        
-    }
 
     public Item() {
     }
