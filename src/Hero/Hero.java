@@ -1,6 +1,8 @@
 package Hero;
 import Armour.Armours;
 import Attributes.BaseAttributes;
+import CustomExceptions.InvalidArmourException;
+import CustomExceptions.InvalidWeaponException;
 import Item.Item;
 import Weapons.Weapons;
 import java.util.HashMap;
@@ -29,9 +31,9 @@ public abstract class Hero extends Item {
         this.classType = classType;
     }
 
-    public abstract boolean equipWeapon(Weapons wep);
+    public abstract boolean equipWeapon(Weapons wep) throws InvalidWeaponException;
 
-    public abstract boolean equipArmour(Armours armour);
+    public abstract boolean equipArmour(Armours armour) throws InvalidArmourException;
 
     public abstract void attributeGain();
 

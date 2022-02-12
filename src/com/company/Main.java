@@ -1,17 +1,18 @@
 package com.company;
 import Armour.Armours;
 import Attributes.PrimaryAttributes;
+import CustomExceptions.InvalidArmourException;
+import CustomExceptions.InvalidWeaponException;
 import Heroes.Warrior;
 import Item.Item;
 import Weapons.Weapons;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidArmourException, InvalidWeaponException {
 
-        String name = "Ulrik";
-
-        Warrior warrior = new Warrior(name);
+        Warrior warrior = new Warrior("Ulrik");
+        System.out.println(warrior.toString());
 
         Weapons axe = new Weapons();
         axe.setItemName("Common Axe");
@@ -21,13 +22,8 @@ public class Main {
         axe.setDmg(7);
         axe.setAttackSpeed(1.1);
 
-        Weapons bow = new Weapons();
-        bow.setItemName("Common Bow");
-        bow.setItemLevel(1);
-        bow.setItemSlot(Item.ItemSlots.WEAPON);
-        bow.setWeaponType(Weapons.WeaponItems.BOWS);
-        bow.setDmg(7);
-        bow.setAttackSpeed(1.1);
+        boolean didEquipWeapon = warrior.equipWeapon(axe);
+        System.out.println(warrior.toString());
 
         Armours plateBodyArmour = new Armours();
         plateBodyArmour.setItemName("Common Plate Body Armour");
@@ -36,24 +32,8 @@ public class Main {
         plateBodyArmour.setArmourItems(Armours.ArmourItems.PLATE);
         plateBodyArmour.setPrimaryAttributes(new PrimaryAttributes(1,0,0));
 
-        boolean didEquipWeapon = warrior.equipWeapon(axe);
-        //boolean didEquipWeapon = warrior.equipWeapon(bow);
-        boolean didEquipBodyArmour = warrior.equipArmour(plateBodyArmour);
 
-        System.out.println(warrior.toString());
-
-        warrior.heroLevelUp();
-
-        Armours plateHeadArmour = new Armours();
-        plateHeadArmour.setItemName("Common Plate Head Armour");
-        plateHeadArmour.setItemLevel(1);
-        plateHeadArmour.setItemSlot(Item.ItemSlots.HEAD);
-        plateHeadArmour.setArmourItems(Armours.ArmourItems.PLATE);
-        plateHeadArmour.setPrimaryAttributes(new PrimaryAttributes(2,0,0));
-
-        boolean didEquipHeadArmour = warrior.equipArmour(plateHeadArmour);
-        warrior.heroLevelUp();
-
+        boolean didEquipArmour = warrior.equipArmour(plateBodyArmour);
         System.out.println(warrior.toString());
 
     }

@@ -29,39 +29,29 @@ public class Warrior extends Hero {
     }
 
     @Override
-    public boolean equipWeapon(Weapons wep) {
-        try {
-            if (wep.itemLevel > this.level) {
-                throw new InvalidWeaponException("Weapon level is to high! Weapon level: " + wep.itemLevel);
-            } else if (wep.getWeaponType() == Weapons.WeaponItems.AXES || wep.getWeaponType() == Weapons.WeaponItems.HAMMERS || wep.getWeaponType() == Weapons.WeaponItems.SWORDS) {
-                this.equipments.put(wep.getItemSlot(), wep);
-                return true;
-            }
-            else{
-                throw new InvalidWeaponException(this.getClassType() + " can only equip " + Weapons.WeaponItems.AXES + " , " + Weapons.WeaponItems.HAMMERS + " or " +  Weapons.WeaponItems.SWORDS);
-            }
-        } catch (InvalidWeaponException e) {
-            e.printStackTrace();
-            return false;
+    public boolean equipWeapon(Weapons wep) throws InvalidWeaponException {
+        if (wep.itemLevel > this.level) {
+            throw new InvalidWeaponException("Weapon level is to high! Weapon level: " + wep.itemLevel);
+        } else if (wep.getWeaponType() == Weapons.WeaponItems.AXES || wep.getWeaponType() == Weapons.WeaponItems.HAMMERS || wep.getWeaponType() == Weapons.WeaponItems.SWORDS) {
+            this.equipments.put(wep.getItemSlot(), wep);
+            return true;
+        }
+        else{
+            throw new InvalidWeaponException(this.getClassType() + " can only equip " + Weapons.WeaponItems.AXES + " , " + Weapons.WeaponItems.HAMMERS + " or " +  Weapons.WeaponItems.SWORDS);
         }
     }
 
 
     @Override
-    public boolean equipArmour(Armours armour) {
-        try {
-            if (armour.itemLevel > this.level) {
-                throw new InvalidArmourException("Armour level is to high! Armour level: " + armour.itemLevel);
-            } else if (armour.getArmourItems() == Armours.ArmourItems.MAIL || armour.getArmourItems() == Armours.ArmourItems.PLATE) {
-                this.equipments.put(armour.getItemSlot(), armour);
-                return true;
-            }
-            else{
-                throw new InvalidArmourException(this.getClassType() + " can only equip " + Armours.ArmourItems.MAIL + " or " + Armours.ArmourItems.PLATE);
-            }
-        } catch (InvalidArmourException e) {
-            e.printStackTrace();
-            return false;
+    public boolean equipArmour(Armours armour) throws InvalidArmourException {
+        if (armour.itemLevel > this.level) {
+            throw new InvalidArmourException("Armour level is to high! Armour level: " + armour.itemLevel);
+        } else if (armour.getArmourItems() == Armours.ArmourItems.MAIL || armour.getArmourItems() == Armours.ArmourItems.PLATE) {
+            this.equipments.put(armour.getItemSlot(), armour);
+            return true;
+        }
+        else{
+            throw new InvalidArmourException(this.getClassType() + " can only equip " + Armours.ArmourItems.MAIL + " or " + Armours.ArmourItems.PLATE);
         }
     }
 
