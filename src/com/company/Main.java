@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) throws InvalidArmourException, InvalidWeaponException {
 
-        Warrior warrior = new Warrior("Ulrik");
+        Warrior warrior = new Warrior("Muradin Bronzebeard");
         System.out.println(warrior.toString());
 
         Weapons axe = new Weapons();
@@ -29,7 +29,7 @@ public class Main {
         plateBodyArmour.setItemName("Common Plate Body Armour");
         plateBodyArmour.setItemLevel(1);
         plateBodyArmour.setItemSlot(Item.ItemSlots.BODY);
-        plateBodyArmour.setArmourItems(Armours.ArmourItems.PLATE);
+        plateBodyArmour.setArmourType(Armours.ArmourItems.PLATE);
         plateBodyArmour.setPrimaryAttributes(new PrimaryAttributes(1,0,0));
 
 

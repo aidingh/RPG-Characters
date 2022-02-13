@@ -10,10 +10,18 @@ public class Weapons extends Item{
     public double dps;
     public double attackSpeed;
     public double dmg;
-    public String weaponName;
     public WeaponItems weaponType;
 
     public Weapons() {}
+
+    public Weapons(double attackSpeed, double dmg, int itemLevel, String weaponName, WeaponItems weaponType, ItemSlots itemSlot) {
+        this.attackSpeed = attackSpeed;
+        this.dmg = dmg;
+        this.setItemName(weaponName);
+        this.weaponType = weaponType;
+        this.setItemLevel(itemLevel);
+        this.setItemSlot(itemSlot);
+    }
 
     public WeaponItems getWeaponType() {
         return weaponType;
@@ -49,10 +57,6 @@ public class Weapons extends Item{
 
     public void setDmg(int dmg) {
         this.dmg = dmg;
-    }
-    
-    public String getWeaponName() {
-        return weaponName;
     }
 
 }

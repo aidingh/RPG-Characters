@@ -7,6 +7,12 @@ import Item.Item;
 import Weapons.Weapons;
 import java.util.HashMap;
 
+/**
+ * @author Aidin Ghassemloi
+ * Abstact class Hero is extended among all hero classes.
+ * Abstact methods are defined, the methods needs to be implmeneted for all heros.
+ */
+
 public abstract class Hero extends Item {
 
     public enum ClassType {

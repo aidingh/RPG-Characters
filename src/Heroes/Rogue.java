@@ -7,19 +7,19 @@ import CustomExceptions.InvalidWeaponException;
 import Hero.Hero;
 import Weapons.Weapons;
 
-public class Ranger extends Hero{
+public class Rogue extends Hero {
 
     public String name;
 
-    public Ranger(String name) {
+    public Rogue(String name) {
         this.name = name;
-        this.setBaseAttributes(new BaseAttributes(1, 7, 1));
-        this.setClassType(ClassType.RANGER);
+        this.setBaseAttributes(new BaseAttributes(2, 6, 1));
+        this.setClassType(ClassType.ROGUE);
     }
 
     @Override
     public String toString() {
-        return "Ranger{" +
+        return "Rogue{" +
                 "Level = " + level +
                 ", Dps = " + this.getCharacterDps() +
                 ", baseAttributes = " + "Strength: "+ baseAttributes.str + " Dexterity: "+ baseAttributes.dex + " Intelligence: "+ baseAttributes.intel +
@@ -32,12 +32,12 @@ public class Ranger extends Hero{
     public boolean equipWeapon(Weapons wep) throws InvalidWeaponException {
         if (wep.itemLevel > this.level) {
             throw new InvalidWeaponException("Weapon level is to high! Weapon level: " + wep.itemLevel);
-        } else if (wep.getWeaponType() == Weapons.WeaponItems.BOWS) {
+        } else if (wep.getWeaponType() == Weapons.WeaponItems.DAGGERS || wep.getWeaponType() == Weapons.WeaponItems.SWORDS) {
             this.equipments.put(wep.getItemSlot(), wep);
             return true;
         }
         else{
-            throw new InvalidWeaponException(this.getClassType() + " can only equip " + Weapons.WeaponItems.BOWS);
+            throw new InvalidWeaponException(this.getClassType() + " can only equip " + Weapons.WeaponItems.DAGGERS + " or " + Weapons.WeaponItems.SWORDS);
         }
     }
 
@@ -45,12 +45,12 @@ public class Ranger extends Hero{
     public boolean equipArmour(Armours armour) throws InvalidArmourException {
         if (armour.itemLevel > this.level) {
             throw new InvalidArmourException("Armour level is to high! Armour level: " + armour.itemLevel);
-        } else if (armour.getArmourItems() == Armours.ArmourItems.MAIL || armour.getArmourItems() == Armours.ArmourItems.LEATHER) {
+        } else if (armour.getArmourItems() == Armours.ArmourItems.LEATHER || armour.getArmourItems() == Armours.ArmourItems.MAIL) {
             this.equipments.put(armour.getItemSlot(), armour);
             return true;
         }
         else{
-            throw new InvalidArmourException(this.getClassType() + " can only equip " + Armours.ArmourItems.MAIL + " or " + Armours.ArmourItems.LEATHER);
+            throw new InvalidArmourException(this.getClassType() + " can only equip " + Armours.ArmourItems.LEATHER + " or " + Armours.ArmourItems.MAIL);
         }
     }
 
@@ -58,7 +58,7 @@ public class Ranger extends Hero{
     public void attributeGain() {
         BaseAttributes attributes = this.getBaseAttributes();
         attributes.str = attributes.str + 1;
-        attributes.dex = attributes.dex + 5;
+        attributes.dex = attributes.dex + 4;
         attributes.intel = attributes.intel + 1;
         this.setBaseAttributes(attributes);
     }

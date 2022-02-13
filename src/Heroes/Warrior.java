@@ -7,16 +7,30 @@ import CustomExceptions.InvalidWeaponException;
 import Hero.Hero;
 import Weapons.Weapons;
 
+/**
+ * @author Aidin Ghassemloi
+ * Warrior class extending the hero class.
+ * Specific warrior functions are present in this class.
+ */
+
 public class Warrior extends Hero {
 
     public String name;
 
+    /**
+     * Creates a warrior object and sets its initial values.
+     * @param  name name of the new class.
+     */
     public Warrior(String name) {
         this.name = name;
         this.setBaseAttributes(new BaseAttributes(5, 2, 1));
         this.setClassType(ClassType.WARRIOR);
     }
 
+    /**
+     * Returns a string containing the warrior class attributes and more.
+     * @return Object as string.
+     */
     @Override
     public String toString() {
         return "Warrior{" +
@@ -28,6 +42,14 @@ public class Warrior extends Hero {
                 '}';
     }
 
+    /**
+     * Equips a weapon object to the warrior class.
+     * Warrior can only equip axes, hammers or swords.
+     * Function also checks if the class is the right hero level to equip the weapon.
+     *
+     * @param wep Weapon object.
+     * @throws InvalidWeaponException will throw custom exception.
+     */
     @Override
     public boolean equipWeapon(Weapons wep) throws InvalidWeaponException {
         if (wep.itemLevel > this.level) {
@@ -41,7 +63,14 @@ public class Warrior extends Hero {
         }
     }
 
-
+    /**
+     * Equips an armour object to the warrior class.
+     * Warrior can only equip mail or plate armour.
+     * Function also checks if the class is the right hero level to equip the armour.
+     *
+     * @param  armour Armour object
+     * @throws InvalidArmourException will throw custom exception.
+     */
     @Override
     public boolean equipArmour(Armours armour) throws InvalidArmourException {
         if (armour.itemLevel > this.level) {
@@ -55,6 +84,9 @@ public class Warrior extends Hero {
         }
     }
 
+    /**
+     * Attribute gain per hero level for the warrior class
+     */
     @Override
     public void attributeGain() {
         BaseAttributes attributes = this.getBaseAttributes();
@@ -64,6 +96,12 @@ public class Warrior extends Hero {
         this.setBaseAttributes(attributes);
     }
 
+    /**
+     * Returns a double containing the dps output for the warrior class.
+     * Function will handle three main cases: 1) If no weapon and armour is equipped. 2) If armour is equipped. 3) If weapon and armour is equipped.
+     *
+     * @return (this.charDps) double containing the class dps.
+     */
     @Override
     public double getCharacterDps() {
         this.base = this.getBaseAttributes().str;
@@ -73,7 +111,6 @@ public class Warrior extends Hero {
         }
         for (ItemSlots key : equipments.keySet()) {
             if(key != ItemSlots.WEAPON){
-                System.out.println("Key: " + key + ", Value: " + equipments.get(key).getPrimaryAttributes().str);
                 this.totalPrimaryAttributes = this.totalPrimaryAttributes + equipments.get(key).getPrimaryAttributes().str;
             }
             else {

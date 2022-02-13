@@ -1,6 +1,5 @@
 package Armour;
 import Attributes.PrimaryAttributes;
-import Hero.Hero;
 import Item.Item;
 
 public class Armours extends Item {
@@ -14,11 +13,19 @@ public class Armours extends Item {
     public Armours() {
     }
 
+    public Armours(String armourName, int itemLevel, Armours.ArmourItems armourType, ItemSlots itemSlot, PrimaryAttributes prime) {
+        this.armourItems = armourType;
+        this.setPrimaryAttributes(prime);
+        this.setItemName(armourName);
+        this.setItemLevel(itemLevel);
+        this.setItemSlot(itemSlot);
+    }
+
     public ArmourItems getArmourItems() {
         return armourItems;
     }
 
-    public void setArmourItems(ArmourItems armourItems) {
+    public void setArmourType(ArmourItems armourItems) {
         this.armourItems = armourItems;
     }
 }

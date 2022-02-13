@@ -1,6 +1,4 @@
 package Item;
-
-
 import Attributes.PrimaryAttributes;
 import Weapons.Weapons;
 
@@ -18,7 +16,6 @@ public abstract class Item {
 
     public Item() {
     }
-
 
     public double getWeaponDamage(){
         return wep.getWeaponDamage();
@@ -55,5 +52,4 @@ public abstract class Item {
     public void setItemLevel(int itemLevel) {
         this.itemLevel = itemLevel;
     }
-
 }
