@@ -45,6 +45,10 @@ public abstract class Hero extends Item {
 
     public abstract double getCharacterDps();;
 
+    /**
+     * Function is called when a class levels up.
+     * This function will call the abstract method attributeGain() that will gain the correct attributes for the corresponding class.
+     */
     public void heroLevelUp(){
         this.level = this.level + 1;
         this.attributeGain();

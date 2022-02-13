@@ -12,7 +12,6 @@ import Weapons.Weapons;
  * Warrior class extending the hero class.
  * Specific warrior functions are present in this class.
  */
-
 public class Warrior extends Hero {
 
     public String name;
@@ -85,7 +84,7 @@ public class Warrior extends Hero {
     }
 
     /**
-     * Attribute gain per hero level for the warrior class
+     * Attribute gain per hero level for the warrior class.
      */
     @Override
     public void attributeGain() {

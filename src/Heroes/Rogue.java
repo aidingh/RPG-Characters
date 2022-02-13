@@ -7,16 +7,29 @@ import CustomExceptions.InvalidWeaponException;
 import Hero.Hero;
 import Weapons.Weapons;
 
+/**
+ * @author Aidin Ghassemloi
+ * Rogue class extending the hero class.
+ * Specific Rogue functions are present in this class.
+ */
 public class Rogue extends Hero {
 
     public String name;
 
+    /**
+     * Creates a rogue object and sets its initial values.
+     * @param  name name of the new class.
+     */
     public Rogue(String name) {
         this.name = name;
         this.setBaseAttributes(new BaseAttributes(2, 6, 1));
         this.setClassType(ClassType.ROGUE);
     }
 
+    /**
+     * Returns a string containing the rogue class attributes and more.
+     * @return Object as string.
+     */
     @Override
     public String toString() {
         return "Rogue{" +
@@ -28,6 +41,14 @@ public class Rogue extends Hero {
                 '}';
     }
 
+    /**
+     * Equips a weapon object to the rogue class.
+     * Rogue can only equip daggers or swords.
+     * Function also checks if the class is the right hero level to equip the weapon.
+     *
+     * @param wep Weapon object.
+     * @throws InvalidWeaponException will throw custom exception.
+     */
     @Override
     public boolean equipWeapon(Weapons wep) throws InvalidWeaponException {
         if (wep.itemLevel > this.level) {
@@ -41,6 +62,14 @@ public class Rogue extends Hero {
         }
     }
 
+    /**
+     * Equips an armour object to the rogue class.
+     * Rogue can only equip leather or mail armour.
+     * Function also checks if the class is the right hero level to equip the armour.
+     *
+     * @param  armour Armour object
+     * @throws InvalidArmourException will throw custom exception.
+     */
     @Override
     public boolean equipArmour(Armours armour) throws InvalidArmourException {
         if (armour.itemLevel > this.level) {
@@ -54,6 +83,9 @@ public class Rogue extends Hero {
         }
     }
 
+    /**
+     * Attribute gain per hero level for the rogue class.
+     */
     @Override
     public void attributeGain() {
         BaseAttributes attributes = this.getBaseAttributes();
@@ -63,6 +95,12 @@ public class Rogue extends Hero {
         this.setBaseAttributes(attributes);
     }
 
+    /**
+     * Returns a double containing the dps output for the rogue class.
+     * Function will handle three main cases: 1) If no weapon and armour is equipped. 2) If armour is equipped. 3) If weapon and armour is equipped.
+     *
+     * @return (this.charDps) double containing the class dps.
+     */
     @Override
     public double getCharacterDps() {
         this.base = this.getBaseAttributes().dex;

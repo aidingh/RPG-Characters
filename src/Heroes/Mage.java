@@ -7,16 +7,29 @@ import CustomExceptions.InvalidWeaponException;
 import Hero.Hero;
 import Weapons.Weapons;
 
+/**
+ * @author Aidin Ghassemloi
+ * Mage class extending the hero class.
+ * Specific Mage functions are present in this class.
+ */
 public class Mage extends Hero {
 
     public String name;
 
+    /**
+     * Creates a mage object and sets its initial values.
+     * @param  name name of the new class.
+     */
     public Mage(String name) {
         this.name = name;
         this.setBaseAttributes(new BaseAttributes(1, 1, 8));
         this.setClassType(ClassType.MAGE);
     }
 
+    /**
+     * Returns a string containing the mage class attributes and more.
+     * @return Object as string.
+     */
     @Override
     public String toString() {
         return "Mage{" +
@@ -28,6 +41,15 @@ public class Mage extends Hero {
                 '}';
     }
 
+
+    /**
+     * Equips a weapon object to the mage class.
+     * Mage can only equip staffs or wands.
+     * Function also checks if the class is the right hero level to equip the weapon.
+     *
+     * @param wep Weapon object.
+     * @throws InvalidWeaponException will throw custom exception.
+     */
     @Override
     public boolean equipWeapon(Weapons wep) throws InvalidWeaponException {
         if (wep.itemLevel > this.level) {
@@ -41,6 +63,14 @@ public class Mage extends Hero {
         }
     }
 
+    /**
+     * Equips an armour object to the mage class.
+     * Mage can only equip cloth armour.
+     * Function also checks if the class is the right hero level to equip the armour.
+     *
+     * @param  armour Armour object
+     * @throws InvalidArmourException will throw custom exception.
+     */
     @Override
     public boolean equipArmour(Armours armour) throws InvalidArmourException {
         if (armour.itemLevel > this.level) {
@@ -54,6 +84,9 @@ public class Mage extends Hero {
         }
     }
 
+    /**
+     * Attribute gain per hero level for the mage class.
+     */
     @Override
     public void attributeGain() {
         BaseAttributes attributes = this.getBaseAttributes();
@@ -63,6 +96,12 @@ public class Mage extends Hero {
         this.setBaseAttributes(attributes);
     }
 
+    /**
+     * Returns a double containing the dps output for the mage class.
+     * Function will handle three main cases: 1) If no weapon and armour is equipped. 2) If armour is equipped. 3) If weapon and armour is equipped.
+     *
+     * @return (this.charDps) double containing the class dps.
+     */
     @Override
     public double getCharacterDps() {
         this.base = this.getBaseAttributes().intel;

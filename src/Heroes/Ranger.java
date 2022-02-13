@@ -7,16 +7,30 @@ import CustomExceptions.InvalidWeaponException;
 import Hero.Hero;
 import Weapons.Weapons;
 
+/**
+ * @author Aidin Ghassemloi
+ * ranger class extending the hero class.
+ * Specific Ranger functions are present in this class.
+ */
 public class Ranger extends Hero{
 
     public String name;
 
+    /**
+     * Creates a ranger object and sets its initial values.
+     * @param  name name of the new class.
+     */
     public Ranger(String name) {
         this.name = name;
         this.setBaseAttributes(new BaseAttributes(1, 7, 1));
         this.setClassType(ClassType.RANGER);
     }
 
+
+    /**
+     * Returns a string containing the ranger class attributes and more.
+     * @return Object as string.
+     */
     @Override
     public String toString() {
         return "Ranger{" +
@@ -28,6 +42,15 @@ public class Ranger extends Hero{
                 '}';
     }
 
+
+    /**
+     * Equips a weapon object to the ranger class.
+     * Ranger can only equip bows.
+     * Function also checks if the class is the right hero level to equip the weapon.
+     *
+     * @param wep Weapon object.
+     * @throws InvalidWeaponException will throw custom exception.
+     */
     @Override
     public boolean equipWeapon(Weapons wep) throws InvalidWeaponException {
         if (wep.itemLevel > this.level) {
@@ -41,6 +64,14 @@ public class Ranger extends Hero{
         }
     }
 
+    /**
+     * Equips an armour object to the ranger class.
+     * Ranger can only equip mail or leather armour.
+     * Function also checks if the class is the right hero level to equip the armour.
+     *
+     * @param  armour Armour object
+     * @throws InvalidArmourException will throw custom exception.
+     */
     @Override
     public boolean equipArmour(Armours armour) throws InvalidArmourException {
         if (armour.itemLevel > this.level) {
@@ -54,6 +85,9 @@ public class Ranger extends Hero{
         }
     }
 
+    /**
+     * Attribute gain per hero level for the ranger class.
+     */
     @Override
     public void attributeGain() {
         BaseAttributes attributes = this.getBaseAttributes();
@@ -63,6 +97,12 @@ public class Ranger extends Hero{
         this.setBaseAttributes(attributes);
     }
 
+    /**
+     * Returns a double containing the dps output for the ranger class.
+     * Function will handle three main cases: 1) If no weapon and armour is equipped. 2) If armour is equipped. 3) If weapon and armour is equipped.
+     *
+     * @return (this.charDps) double containing the class dps.
+     */
     @Override
     public double getCharacterDps() {
         this.base = this.getBaseAttributes().dex;
