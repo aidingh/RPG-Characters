@@ -1,4 +1,9 @@
 package Attributes;
+/**
+ * @author Aidin Ghassemloi
+ * Creates a primary attribute object.
+ * PrimaryAttributes will be set to Armours to enhance a heros dps output.
+ */
 
 public class PrimaryAttributes {
     public double str;

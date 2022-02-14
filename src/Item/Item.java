@@ -2,12 +2,20 @@ package Item;
 import Attributes.PrimaryAttributes;
 import Weapons.Weapons;
 
+/**
+ * @author Aidin Ghassemloi
+ * Abstact class Item is extended among Weapons and Armours.
+ */
+
 public abstract class Item {
 
     public enum ItemSlots {
         WEAPON, LEGS, BODY, HEAD
     }
 
+    /**
+     * All public variables in this class is shared among all instances of armours or weapons.
+     */
     public String itemName;
     public int itemLevel;
     public ItemSlots itemSlot;
@@ -17,6 +25,9 @@ public abstract class Item {
     public Item() {
     }
 
+    /**
+     * All public functions in this class is shared among all instances of a new hero class.
+     */
     public double getWeaponDamage(){
         return wep.getWeaponDamage();
     }

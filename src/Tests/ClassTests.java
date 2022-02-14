@@ -6,14 +6,25 @@ import Heroes.Warrior;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * @author Aidin Ghassemloi
+ * Test class for testing hero classes.
+ * Most tests are focused on the Warrior class as there was provided data.
+ */
 public class ClassTests {
 
+    /**
+     * Test: Initial level is set to 1 when a hero class is created.
+     */
     @Test
     public void testInitialHeroLevel() {
         Warrior warrior = new Warrior("Muradin Bronzebeard");
         assertEquals(1, warrior.getLevel());
     }
 
+    /**
+     * Test: Hero level will increase when hero levels up.
+     */
     @Test
     public void testHeroOnLevelUp() {
         Warrior warrior = new Warrior("Muradin Bronzebeard");
@@ -21,6 +32,9 @@ public class ClassTests {
         assertEquals(2, warrior.getLevel());
     }
 
+    /**
+     * Test: Check if base attributes increase correctly when a warrior class levels up.
+     */
     @Test
     public void testWarriorHeroBaseAttributeGain() {
         Warrior warrior = new Warrior("Muradin Bronzebeard");
@@ -33,6 +47,9 @@ public class ClassTests {
         );
     }
 
+    /**
+     * Test: Check if base attributes increase correctly when a ranger class levels up.
+     */
     @Test
     public void testRangerHeroBaseAttributeGain() {
         Ranger ranger = new Ranger("Sylvanas Windrunner");
@@ -45,6 +62,9 @@ public class ClassTests {
         );
     }
 
+    /**
+     * Test: Check if base attributes increase correctly when a rogue class levels up.
+     */
     @Test
     public void testRogueHeroBaseAttributeGain() {
         Rogue rogue = new Rogue("Edwin VanCleef");
@@ -57,6 +77,9 @@ public class ClassTests {
         );
     }
 
+    /**
+     * Test: Check if base attributes increase correctly when a mage class levels up.
+     */
     @Test
     public void testMageHeroBaseAttributeGain() {
         Mage mage = new Mage("Jaina Proudmoore");

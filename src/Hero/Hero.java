@@ -19,6 +19,9 @@ public abstract class Hero extends Item {
         MAGE, RANGER, ROGUE, WARRIOR
     }
 
+    /**
+     * All public variables in this class is shared among all instances of a new hero class.
+     */
     public int level = 1;
     public HashMap<ItemSlots, Item> equipments = new HashMap<>();
     public double charDps;
@@ -27,6 +30,10 @@ public abstract class Hero extends Item {
     public BaseAttributes baseAttributes;
     public ClassType classType;
 
+    /**
+     * All public functions in this class is shared among all instances of a new hero class.
+     * Abstract functions are implemented in the hero classes.
+     */
     public Hero() {}
 
     public ClassType getClassType() {

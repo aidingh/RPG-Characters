@@ -7,11 +7,18 @@ import Heroes.Warrior;
 import Weapons.Weapons;
 import org.junit.jupiter.api.Test;
 import Item.Item;
-
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * @author Aidin Ghassemloi
+ * Test class for testing hero equipments. That includes armour and weapons.
+ * Most tests are focused on the Warrior class as there was provided data.
+ */
 public class ItemTests {
 
+    /**
+     * Test: If a class tries to equip a weapon higher than its current hero level. Then InvalidWeaponException must be thrown.
+     */
     @Test
     public void testInvalidWeaponException(){
         Warrior warrior = new Warrior("Ulrik");
@@ -27,6 +34,9 @@ public class ItemTests {
         assertThrowsExactly(InvalidWeaponException.class, () -> warrior.equipWeapon(axe));
     }
 
+    /**
+     * Test: If a class tries to equip an armour higher than its current hero level. Then InvalidArmourException must be thrown.
+     */
     @Test
     public void testInvalidArmourException(){
         Warrior warrior = new Warrior("Ulrik");
@@ -41,6 +51,9 @@ public class ItemTests {
         assertThrowsExactly(InvalidArmourException.class, () -> warrior.equipArmour(plateBodyArmour));
     }
 
+    /**
+     * Test: If a class tries to equip a wrong armour type. Then InvalidArmourException must be thrown.
+     */
     @Test
     public void testInvalidArmourEquipmentException(){
         Warrior warrior = new Warrior("Ulrik");
@@ -55,6 +68,9 @@ public class ItemTests {
         assertThrowsExactly(InvalidArmourException.class, () -> warrior.equipArmour(clothHeadArmour));
     }
 
+    /**
+     * Test: If a class tries to equip a wrong weapon type. Then InvalidWeaponException must be thrown.
+     */
     @Test
     public void testValidWeaponEquip() throws InvalidWeaponException {
         Warrior warrior = new Warrior("Ulrik");
@@ -70,6 +86,9 @@ public class ItemTests {
         assertTrue(warrior.equipWeapon(sword));
     }
 
+    /**
+     * Test: If a class tries to equip a correct weapon type. Then a boolean = true will be returned to confirm the equipment.
+     */
     @Test
     public void testValidArmourEquip() throws InvalidArmourException {
         Warrior warrior = new Warrior("Ulrik");
@@ -84,6 +103,9 @@ public class ItemTests {
         assertTrue(warrior.equipArmour(plateBodyArmour));
     }
 
+    /**
+     * Test: The initial dps output of a base hero class at level 1. With no weapon or items equipped.
+     */
     @Test
     public void testHeroDpsInit() throws InvalidArmourException {
         Warrior warrior = new Warrior("Ulrik");
@@ -91,6 +113,9 @@ public class ItemTests {
         assertEquals(expected, warrior.getCharacterDps());
     }
 
+    /**
+     * Test: The initial dps output of a base hero class at level 1. With weapon equipped.
+     */
     @Test
     public void testHeroDpsWithWeapon() throws InvalidWeaponException {
         Warrior warrior = new Warrior("Ulrik");
@@ -108,6 +133,9 @@ public class ItemTests {
         assertEquals(expected, warrior.getCharacterDps());
     }
 
+    /**
+     * Test: The initial dps output of a base hero class at level 1. With items and weapons equipped.
+     */
     @Test
     public void testHeroDpsWithWeaponAndArmour() throws InvalidWeaponException, InvalidArmourException {
         Warrior warrior = new Warrior("Ulrik");
@@ -123,24 +151,27 @@ public class ItemTests {
         assertEquals(expected, warrior.getCharacterDps());
     }
 
-
+    /**
+     * Test: The initial dps output of a base hero class at level 2. With weapons equipped.
+     */
     @Test
-    public void testHeroDpsWithWeaponAtLevelN() throws InvalidWeaponException {
+    public void testHeroDpsWithWeaponAtHeroLevelUp() throws InvalidWeaponException {
         Warrior warrior = new Warrior("Ulrik");
-
         warrior.heroLevelUp();
 
         Weapons axe = new Weapons(1.1, 7.0, 1, "Common Axe", Weapons.WeaponItems.AXES, Item.ItemSlots.WEAPON);
 
         boolean didEquipWeapon = warrior.equipWeapon(axe);
-
         double expected = 8.316000000000003;
 
         assertEquals(expected, warrior.getCharacterDps());
     }
 
+    /**
+     * Test: The initial dps output of a base hero class at level 2. With items and weapons equipped.
+     */
     @Test
-    public void testHeroDpsWithWeaponAndArmourAtLevelN() throws InvalidWeaponException, InvalidArmourException {
+    public void testHeroDpsWithWeaponAndArmourAtHeroLevelUp() throws InvalidWeaponException, InvalidArmourException {
 
         Warrior warrior = new Warrior("Ulrik");
         warrior.heroLevelUp();
