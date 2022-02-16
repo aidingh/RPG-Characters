@@ -107,10 +107,10 @@ public class ItemTests {
      * Test: The initial dps output of a base hero class at level 1. With no weapon or items equipped.
      */
     @Test
-    public void testHeroDpsInit() throws InvalidArmourException {
+    public void testHeroDpsInit() {
         Warrior warrior = new Warrior("Ulrik");
         double expected = 1.05;
-        assertEquals(expected, warrior.getCharacterDps());
+        assertEquals(expected, warrior.getHeroDps());
     }
 
     /**
@@ -130,7 +130,7 @@ public class ItemTests {
 
         boolean didEquip = warrior.equipWeapon(axe);
         double expected = 8.085;
-        assertEquals(expected, warrior.getCharacterDps());
+        assertEquals(expected, warrior.getHeroDps());
     }
 
     /**
@@ -148,7 +148,7 @@ public class ItemTests {
 
         double expected = 8.162;
 
-        assertEquals(expected, warrior.getCharacterDps());
+        assertEquals(expected, warrior.getHeroDps());
     }
 
     /**
@@ -164,7 +164,7 @@ public class ItemTests {
         boolean didEquipWeapon = warrior.equipWeapon(axe);
         double expected = 8.316000000000003;
 
-        assertEquals(expected, warrior.getCharacterDps());
+        assertEquals(expected, warrior.getHeroDps());
     }
 
     /**
@@ -184,6 +184,6 @@ public class ItemTests {
 
         double expected = 8.393000000000002;
 
-        assertEquals(expected, warrior.getCharacterDps());
+        assertEquals(expected, warrior.getHeroDps());
     }
 }

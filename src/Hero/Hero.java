@@ -24,7 +24,7 @@ public abstract class Hero extends Item {
      */
     public int level = 1;
     public HashMap<ItemSlots, Item> equipments = new HashMap<>();
-    public double charDps;
+    public double heroDps;
     public double base;
     public double totalPrimaryAttributes;
     public BaseAttributes baseAttributes;
@@ -50,7 +50,7 @@ public abstract class Hero extends Item {
 
     public abstract void attributeGain();
 
-    public abstract double getCharacterDps();;
+    public abstract double getHeroDps();;
 
     /**
      * Function is called when a class levels up.
@@ -72,9 +72,4 @@ public abstract class Hero extends Item {
     public int getLevel() {
         return level;
     }
-
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
 }

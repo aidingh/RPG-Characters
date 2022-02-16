@@ -34,7 +34,7 @@ public class Mage extends Hero {
     public String toString() {
         return "Mage{" +
                 "Level = " + level +
-                ", Dps = " + this.getCharacterDps() +
+                ", Dps = " + this.getHeroDps() +
                 ", baseAttributes = " + "Strength: "+ baseAttributes.str + " Dexterity: "+ baseAttributes.dex + " Intelligence: "+ baseAttributes.intel +
                 ", ClassType=" + classType +
                 ", Name='" + name + '\'' +
@@ -103,11 +103,11 @@ public class Mage extends Hero {
      * @return (this.charDps) double containing the class dps.
      */
     @Override
-    public double getCharacterDps() {
+    public double getHeroDps() {
         this.base = this.getBaseAttributes().intel;
         if(equipments.isEmpty()){
             double weaponDps = 1;
-            return this.charDps = weaponDps * ( 1 + (base / 100));
+            return this.heroDps = weaponDps * ( 1 + (base / 100));
         }
         for (ItemSlots key : equipments.keySet()) {
             if(key != ItemSlots.WEAPON){
@@ -117,9 +117,9 @@ public class Mage extends Hero {
                 if(equipments.get(ItemSlots.WEAPON) != null){
                     double weaponDps = equipments.get(ItemSlots.WEAPON).getWeaponDamage();
                     if(this.totalPrimaryAttributes == 0){
-                        return this.charDps = weaponDps * ( 1 + (this.base / 100));
+                        return this.heroDps = weaponDps * ( 1 + (this.base / 100));
                     }
-                    return this.charDps = weaponDps * ( 1 + ((this.base + this.totalPrimaryAttributes) / 100));
+                    return this.heroDps = weaponDps * ( 1 + ((this.base + this.totalPrimaryAttributes) / 100));
                 }
             }
         }
